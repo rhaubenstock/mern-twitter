@@ -1,4 +1,3 @@
 node_modules/
-
-password.txt
+frontend/node_modules/
 config/keys.js
