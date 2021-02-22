@@ -7,20 +7,25 @@ const tweets = require("./routes/api/tweets");
 const bodyParser = require('body-parser');
 const User = require('./models/User');
 
+//passport
+const passport = require('passport');
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to mongoDB"))
   .catch(err => console.log(err));
 
 
-app.get("/", (req, res) => {
-  const user = new User ({
-    handle: "jim",
-    email: "jim@jim.jim",
-    password: "jimisgreat123"
-  });
-  user.save();
-  res.send("Hello Worlddddd!");
-});
+// app.get("/", (req, res) => {
+//   const user = new User ({
+//     handle: "jim",
+//     email: "jim@jim.jim",
+//     password: "jimisgreat123"
+//   });
+//   user.save();
+//   res.send("Hello Worlddddd!");
+// });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
